@@ -3,9 +3,6 @@ let express = require('express'),
 cors = require('cors'),
 app = express(),
 
-// just a string here
-str = '',
-
 // hard coded configuration object
 conf = {
 
@@ -14,35 +11,50 @@ conf = {
     // else use hard coded value for port 8080
     port: process.env.PORT || process.argv[2] || 8080,
 
+    // origin fixer
+    // see https://github.com/expressjs/cors/issues/71
+    originFix: function (req, res, next) {
+
+        req.headers.origin = req.headers.origin || req.headers.host;
+
+        next();
+
+    },
+
+    // Cross Origin Resource Sharing Options
     cors: {
 
         // origin handler
         origin: function (origin, cb) {
 
-            // always allow for now
+            let wl = ['dp83-cors.herokuapp.com', 'dustinpfister.github.io'];
 
-            str = origin;
-            cb(null, true);
+            if (wl.indexOf(origin) != -1) {
+
+                cb(null, true);
+
+            } else {
+
+                cb(new Error('invalid origin: ' + origin), false);
+
+            }
 
         },
+
         optionsSuccessStatus: 200
 
     }
 
 };
 
-// use cors for all domains
-//app.use(cors(conf.cors));
+// use origin fixer, then cors
+app.use(conf.originFix, cors(conf.cors));
 
 // get at root
-app.get('/', cors(conf.cors), function (req, res, next) {
-
-    console.log(req.hostname);
+app.get('/', function (req, res, next) {
 
     res.json({
-        mess: 'hello I am a simple json service.',
-        fromHostname: req.hostname,
-        origin: str || 'unknown'
+        mess: 'hello '+ req.headers.host + ' it looks like you are on the whitelist'
     });
 
 });
