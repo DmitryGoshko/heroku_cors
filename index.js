@@ -58,7 +58,7 @@ app.use(conf.originFix, cors(conf.cors));
 app.get('/', function (req, res, next) {
 
     res.json({
-        mess: 'hello ' + req.headers.host + ' it looks like you are on the whitelist',
+        mess: 'hello ' + req.headers.origin + ' it looks like you are on the whitelist',
 		origin: req.headers.origin,
         req_secure: req.secure,
         req_protocol: req.protocol
