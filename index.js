@@ -27,7 +27,7 @@ conf = {
         // origin handler
         origin: function (origin, cb) {
 
-            let wl = ['https://dp83-cors.herokuapp.com', 'https://dustinpfister.github.io'];
+            let wl = ['https://dp83-cors.herokuapp.com', 'https://dustinpfister.github.io','https://www.google.com'];
 
             if (wl.indexOf(origin) != -1) {
 
