@@ -35,11 +35,11 @@ conf = {
 
             } else {
 
-                //cb(new Error('invalid origin: ' + origin), false);
+                cb(new Error('invalid origin: ' + origin), false);
 
                 //console.log('bad domain');
 
-                cb(null, true);
+                //cb(null, true);
 
             }
 
