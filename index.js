@@ -35,11 +35,11 @@ conf = {
 
             } else {
 
-                cb(new Error('invalid origin: ' + origin), false);
+                //cb(new Error('invalid origin: ' + origin), false);
 
                 //console.log('bad domain');
 
-                //cb(null, true);
+                cb(null, true);
 
             }
 
@@ -60,8 +60,7 @@ app.get('/', function (req, res, next) {
     res.json({
         mess: 'hello ' + req.headers.host + ' it looks like you are on the whitelist',
         req_secure: req.secure,
-        req_protocol: req.protocol,
-        req_headers: req.headers
+        req_protocol: req.protocol
     });
 
 });
