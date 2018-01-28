@@ -27,7 +27,8 @@ conf = {
         // origin handler
         origin: function (origin, cb) {
 
-            let wl = ['https://dp83-cors.herokuapp.com', 'https://dustinpfister.github.io','https://www.google.com'];
+            // setup a white list
+            let wl = ['https://dp83-cors.herokuapp.com', 'https://dustinpfister.github.io', 'https://www.google.com'];
 
             if (wl.indexOf(origin) != -1) {
 
@@ -36,10 +37,6 @@ conf = {
             } else {
 
                 cb(new Error('invalid origin: ' + origin), false);
-
-                //console.log('bad domain');
-
-                //cb(null, true);
 
             }
 
@@ -59,9 +56,7 @@ app.get('/', function (req, res, next) {
 
     res.json({
         mess: 'hello ' + req.headers.origin + ' it looks like you are on the whitelist',
-		origin: req.headers.origin,
-        req_secure: req.secure,
-        req_protocol: req.protocol
+        origin: req.headers.origin
     });
 
 });
