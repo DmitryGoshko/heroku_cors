@@ -15,7 +15,7 @@ conf = {
     // see https://github.com/expressjs/cors/issues/71
     originFix: function (req, res, next) {
 
-        req.headers.origin = req.headers.origin || req.protocol + '://' + req.headers.host;
+        req.headers.origin = req.headers.origin || 'https://' + req.headers.host;
 
         next();
 
@@ -27,7 +27,7 @@ conf = {
         // origin handler
         origin: function (origin, cb) {
 
-            let wl = ['https://dp83-cors.herokuapp.com', 'https://dustinpfister.github.io', 'http://localhost:8080'];
+            let wl = ['https://dp83-cors.herokuapp.com', 'https://dustinpfister.github.io'];
 
             if (wl.indexOf(origin) != -1) {
 
