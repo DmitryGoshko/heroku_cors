@@ -1,6 +1,6 @@
 
 let express = require('express'),
-cors = require('cors'),
+//cors = require('cors'),
 app = express(),
 
 // hard coded configuration object
@@ -13,6 +13,7 @@ conf = {
 
     // origin fixer
     // see https://github.com/expressjs/cors/issues/71
+	/*
     originFix: function (req, res, next) {
 
         req.headers.origin = req.headers.origin || req.headers.host;
@@ -27,7 +28,7 @@ conf = {
         // origin handler
         origin: function (origin, cb) {
 
-            let wl = ['dp83-cors.herokuapp.com', 'dustinpfister.github.io'];
+            let wl = ['dp83-cors.herokuapp.com', 'dustinpfister.github.io','localhost:8080'];
 
             if (wl.indexOf(origin) != -1) {
 
@@ -44,11 +45,12 @@ conf = {
         optionsSuccessStatus: 200
 
     }
+	*/
 
 };
 
 // use origin fixer, then cors
-app.use(conf.originFix, cors(conf.cors));
+//app.use(conf.originFix, cors(conf.cors));
 
 // get at root
 app.get('/', function (req, res, next) {
