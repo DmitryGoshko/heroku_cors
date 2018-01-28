@@ -1,6 +1,6 @@
 # heroku_cors
 
-Testing out [express](https://www.npmjs.com/package/express), and [cors](https://www.npmjs.com/package/cors) in node.js.
+Testing out [express](https://www.npmjs.com/package/express), and [cors](https://www.npmjs.com/package/cors) in node.js. CORS stands for Cross Origin Resource Sharing, and is a way to share resources across origins. I made this project because I am interested in making some services that I can deploy to heroku and used from [my website on github pages](http://dustinpfister.github.io), which would involve making cross origin requests.
 
 ## clone, install, create, and deploy to heroku
 
@@ -15,7 +15,7 @@ $ heroku create dp83-cors
 $ git push heroku master
 ```
 
-The install process might be optional if you just want to deploy.
+You can replace 'dp83-cors' with the desired appname if I still have this up. The install process might be optional if you just want to deploy.
 
 ## The Client System
 
