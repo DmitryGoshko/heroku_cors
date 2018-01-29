@@ -11,13 +11,23 @@ conf = {
     // else use hard coded value for port 8080
     port: process.env.PORT || process.argv[2] || 8080,
 
-    // origin fixer
+    // origin undefined
     // see https://github.com/expressjs/cors/issues/71
-    originFix: function (req, res, next) {
+    originUndefined: function (req, res, next) {
 
-        //req.headers.origin = req.headers.origin || 'https://' + req.headers.host;
+        if (!req.headers.origin) {
 
-        next();
+            res.json({
+
+                mess: 'Hi you are visiting the service locally. If this was a CORS the origin header shoud not be undefined'
+
+            });
+
+        } else {
+
+            next();
+
+        }
 
     },
 
@@ -28,7 +38,7 @@ conf = {
         origin: function (origin, cb) {
 
             // setup a white list
-            let wl = ['https://dp83-cors.herokuapp.com', 'https://dustinpfister.github.io', 'https://www.google.com'];
+            let wl = ['https://dustinpfister.github.io'];
 
             if (wl.indexOf(origin) != -1) {
 
@@ -48,14 +58,14 @@ conf = {
 
 };
 
-// use origin fixer, then cors
-app.use(cors(conf.cors));
+// use origin undefined handler, then cors
+app.use(conf.originUndefined, cors(conf.cors));
 
 // get at root
 app.get('/', function (req, res, next) {
 
     res.json({
-        mess: 'hello ' + req.headers.origin + ' it looks like you are on the whitelist',
+        mess: 'hello it looks like you are on the whitelist',
         origin: req.headers.origin
     });
 
