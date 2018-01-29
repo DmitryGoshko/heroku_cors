@@ -15,7 +15,7 @@ conf = {
     // see https://github.com/expressjs/cors/issues/71
     originFix: function (req, res, next) {
 
-        req.headers.origin = req.headers.origin || 'https://' + req.headers.host;
+        //req.headers.origin = req.headers.origin || 'https://' + req.headers.host;
 
         next();
 
@@ -49,7 +49,7 @@ conf = {
 };
 
 // use origin fixer, then cors
-app.use(conf.originFix, cors(conf.cors));
+app.use(cors(conf.cors));
 
 // get at root
 app.get('/', function (req, res, next) {
@@ -65,4 +65,4 @@ app.listen(conf.port, function () {
 
     console.log('CORS-enabled JSON servcie is live on port: ' + conf.port);
 
-})
+});
