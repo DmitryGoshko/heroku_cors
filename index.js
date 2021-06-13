@@ -72,7 +72,8 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/app', function (req, res, next) {
-
+    console.log(res);
+    console.log(req);
     response.sendFile('/index.html');
 
 });
