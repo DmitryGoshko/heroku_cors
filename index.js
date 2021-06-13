@@ -71,6 +71,12 @@ app.get('/', function (req, res, next) {
 
 });
 
+app.get('/app', function (req, res, next) {
+
+    response.sendFile('/index.html');
+
+});
+
 app.listen(conf.port, function () {
 
     console.log('CORS-enabled JSON servcie is live on port: ' + conf.port);
