@@ -18,7 +18,7 @@ if (port == null || port == '') {
 //   );
 //   next();
 // });
-app.use('/', express.static(path.resolve(__dirname, './public')));
+//app.use('/', express.static(path.resolve(__dirname, './public')));
 //app.use(cors());
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '/index.html'));
