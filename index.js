@@ -21,7 +21,7 @@ if (port == null || port == '') {
 app.use('/', express.static(path.resolve(__dirname, './public')));
 //app.use(cors());
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './public/index.html'));
+  res.sendFile(path.resolve(__dirname, '/index.html'));
 });
 
 app.listen(port, () => console.log(`Server listening port - ${port}`));
