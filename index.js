@@ -24,7 +24,7 @@ if (port == null || port == '') {
 //  res.sendFile(path.resolve(__dirname, '/index.html'));
 //});
 
-app.get('/', function(req, res) {
+app.get('/app', function(req, res) {
     res.sendFile(path.join(__dirname, '/index.html'));
   });
 
